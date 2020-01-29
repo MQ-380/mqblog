@@ -1,6 +1,9 @@
+---
 layout: page
-title: "PAGE TITLE"
+title: About
 permalink: /about2/
+---
+
 
 <html>
 <body>
