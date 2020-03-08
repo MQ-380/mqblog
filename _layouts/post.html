@@ -17,6 +17,19 @@ layout: default
   <div class="post">
     {{ content }}
   </div>
+  <div class="pagination">
+    {% if page.previous %}
+      <a  class="prev guide" href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; {{ page.previous.title }}</a>
+    {% else %}
+      <a  class="prev disabled guide">已经是最后一篇啦</a>
+    {% endif %}
+    {% if page.next %}
+      <a href="{{ BASE_PATH }}{{ page.next.url }}"  class="next guide" title="{{ page.next.title }}">{{ page.next.title }} &rarr;</a>
+    {% else %}
+      <div class="next disabled guide">已经是第一篇了</div>
+    {% endif %}
+  </div>
+  <div class="backtop" id='backtop' style="bottom: 90px;"><div class="back-btn" style="background-image: url({{ "/assets/backtop.png" | relative_url }})"></div></div>
   {%- if site.plainwhite.disqus_shortname -%}
   <div id="disqus_thread" style="margin-top:25px"></div>
   <script>

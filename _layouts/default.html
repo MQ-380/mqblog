@@ -27,12 +27,17 @@
             </a>
           {%- endif -%}
           {%- if site.plainwhite.social_links.twitter -%}
-            <a href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}">
+            <a href="/feed.xml">
               <li>
                 <i class="icon-twitter-squared"></i>
               </li>
             </a>
           {%- endif -%}
+          <a href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}">
+            <li>
+              <i class="icon-twitter-squared"></i>
+            </li>
+          </a>
         </ul>
 
         {%- if site.plainwhite.navigation -%}
@@ -66,9 +71,13 @@
           </div>
           {%- endfor -%}
         </div>
-        <p class='copyright'>&copy;
-          2016-{{ "now" | date: "%Y" }}</p>
+        <div class='bottom'>
+          <span class='tips'>
+            "世路如今已惯，此心到处悠然。"
+          </span>
+        </div>
       </section>
+
     </main>
     {%- if site.plainwhite.analytics_id -%}
       <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
@@ -80,5 +89,28 @@
 		gtag('config', '{{ site.plainwhite.analytics_id }}');
 	</script>
     {%- endif -%}
+    <p class='copyright'>&copy;
+      2016-{{ "now" | date: "%Y" }}</p>
+      <script>
+        window.addEventListener('load',function(){
+          let a = document.getElementById('backtop');
+          if(a) {            
+            window.addEventListener('scroll', function(){
+              var visibleHeight = window.innerHeight;
+              var scrollTop = window.pageYOffset || document.body.scrollTop;
+              if(scrollTop > visibleHeight) {
+                a.setAttribute('class','backtop active');
+                console.log(a);
+              } else {
+                a.setAttribute('class','backtop');
+              }
+          });
+          document.getElementById('backtop').addEventListener('click', function(){
+            window.scrollTo(0, 0);
+          });
+        }
+    });
+
+      </script>
   </body>
 </html>

@@ -16,6 +16,7 @@ $rightWidth: 220px;
 }
 
 body {
+  position: relative;
   font-family: "Raleway", sans-serif;
   font-size: 16px;
   line-height: 1.2em;
@@ -43,22 +44,26 @@ h2 {
   margin: 0.7em 0;
 }
 main {
+  position: relative;
   display: flex;
   height: 100%;
-
+  margin-right: 23%;
   @media screen and (min-width: $bigScreenW) {
     max-width: 1440px;
+    margin-right: 23%;
   }
   @media screen and (max-width: 1280px) {
     //margin: 0 75px;
+    margin-right: 23%;
   }
   @media screen and (max-width: 1024px) {
     //margin: 0 35px;
+    margin-right: 23%;
   }
 
   @media screen and (max-width: $mobileW) {
-    margin: 0 10px;
     flex-direction: column;
+    margin: 0;
   }
   @media screen and (max-width: $smallMobileW) {
     margin: 0;
@@ -71,24 +76,24 @@ main {
     }
   }
   .about {
+    background-color: rgb(61, 79, 93);
     color: #fff;
     display: flex;
     height: 100vh;
     padding-bottom: 15vh;
     @media screen and (max-width: $mobileW) {
       height: auto;
-      padding: 10vh 0;
+      padding: 3vh 0;
     }
     @media screen and (min-width: $mobileW + 1) {
       position: fixed;
       right: 0;
       z-index: 2;
       width: 23%;
-      top: 33px;
+      top: 2%;
       height: auto;
       padding-bottom: 0px;
     }
-    min-width: $leftWidth;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -127,34 +132,87 @@ main {
       flex-wrap: wrap;
       flex-direction: column;
     }
-
-    .category_title {
-      font-size: 30px;
-      color: #fff;
-      margin-bottom: 30px;
-    }
-
-    & .category_item {
-      color: #b0cadb;
-      margin-bottom: 16px;
-      font-family: "PingFang SC",sans-serif;
-      & .name {
-        font-size: 20px;
+    & .category_section {
+      @media screen and (max-width: $mobileW ) {
+        display: none;
       }
-      & .number{
+  
+      .category_title {
+        font-size: 30px;
         color: #fff;
-        font-size: 16px;
+        margin-bottom: 30px;
+        line-height: 38px;
+      }
+  
+      & .category_item {
+        color: #b0cadb;
+        margin-bottom: 16px;
+        font-family: "PingFang SC",sans-serif;
+        & .name {
+          font-size: 20px;
+        }
+        & .number{
+          color: #fff;
+          font-size: 16px;
+        }
       }
     }
-
-    & .copyright {
-      position: fixed;
-      right: 0px;
-      bottom: 0px;
-      color: #fff;
+    & .bottom {
+      @media screen and (min-width: $mobileW+1 ) {
+        position: absolute;
+        bottom: 0;
+      }
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      & .tips {
+        display: block;
+        color: #fff;
+        font-size: 20px;
+        font-style:italic;
+        font-family: "PingFang SC",sans-serif;
+      }
     }
   }
 }
+
+
+.copyright {
+  @media screen and (min-width: $mobileW+1 ) {
+    position: fixed;
+    bottom: 0;
+  }
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  color: #fff;
+}
+
+.backtop{
+  position: fixed;
+  bottom: 60px;
+  right: 10px;
+  width: 45px;
+  height: 45px;
+  z-index: 300;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-transition: opacity .15s ease-in;
+  -o-transition: opacity .15s ease-in;
+  transition: opacity .15s ease-in;
+  opacity: 0;
+  &.active {
+    opacity: 1;
+  }
+  & .back-btn {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 100%;
+}
+  }
+
+
 #title {
   a {
     text-decoration: none;
@@ -285,6 +343,34 @@ main {
   h5,
   h6 {
     font-family: Raleway, sans-serif;
+  }
+}
+
+.pagination {
+  position: relative;
+  height: 5em;
+  margin: 25px 0px;
+  & .guide {
+    display: block;
+    position: absolute;
+    font-size: 13px;
+    background: #4d85d1;
+    color: #fff;
+    padding: 0.5em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    &.next {
+      right: 0;
+      @media screen and (max-width: $smallMobileW) {
+        top: 3em;
+      }
+      @media screen and (max-width: $mobileW) {
+        top: 3em;
+      }
+    }
+
   }
 }
 
