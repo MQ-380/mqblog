@@ -44,7 +44,7 @@ a {
     color: $linkColor;
   }
   @media (prefers-color-scheme: dark) {
-    color: #fff;
+    color: #afb0b1;
   };
 }
 
@@ -79,12 +79,12 @@ main {
 
   .content {
     @media (prefers-color-scheme: dark) {
-      background-color: #000;
+      background-color: #1b1b1e;
       .post {
-        color: #fff;
+        color: #afb0b1;
       }
       .post-title {
-        color: #eee;
+        color: #8ab4f8;
       }
     }
     @media screen and (min-width: $mobileW + 1) {
@@ -95,7 +95,7 @@ main {
   .about {
     background-color: rgb(61, 79, 93);
     @media(prefers-color-scheme: dark){
-      background-color: #07131d;
+      background-color: #19242d;
     }
     color: #fff;
     display: flex;
@@ -141,7 +141,7 @@ main {
   .category {
     background-color: rgb(61, 79, 93);
     @media(prefers-color-scheme: dark){
-      background-color: #07131d;
+      background-color: #19242d;
     }
     padding-left: 1.5%;
     @media screen and (min-width: $mobileW + 1) {
@@ -397,7 +397,7 @@ main {
   }
 }
 
-#posts-label {
+.posts-label {
   border-bottom: 1px solid #eee;
   font-size: 15px;
   color: #777;
@@ -405,4 +405,14 @@ main {
   letter-spacing: 0.5px;
   padding-bottom: 10px;
   font-weight: normal;
+  &.normal {
+    padding-top: 30px;
+  }
+}
+
+.dash_border {
+  width: 100%;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #2c2d2d;
 }
