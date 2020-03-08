@@ -55,7 +55,10 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
-.icon-calendar:before { content: '\e800'; } /* '' */
-.icon-github-circled:before { content: '\f09b'; } /* '' */
-.icon-twitter-squared:before { content: '\f304'; } /* '' */
+.icon-calendar:before { content: '\E801'; } /* '' */
+.icon-github-circled:before { content: '\F300'; } /* '' */
+.icon-twitter-squared:before { content: '\F304'; } /* '' */
+.icon-email-squared:before{ content: '\F0E0'}
+.icon-all-squared:before{ content: '\E802'}
 .icon-linkedin-squared:before { content: '\f30c'; } /* '' */
+.icon-rss-squared:before { content: '\F143'; } /* '' */

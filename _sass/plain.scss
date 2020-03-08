@@ -15,14 +15,19 @@ $rightWidth: 220px;
   box-sizing: border-box;
 }
 
+
+
 body {
   position: relative;
-  font-family: "Raleway", sans-serif;
+  font-family: "PingFang SC",sans-serif;
   font-size: 16px;
   line-height: 1.2em;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @media (prefers-color-scheme: dark) {
+      -webkit-font-smoothing: auto;
+  }
 }
 
 img,
@@ -38,6 +43,9 @@ a {
   &:hover {
     color: $linkColor;
   }
+  @media (prefers-color-scheme: dark) {
+    color: #fff;
+  };
 }
 
 h2 {
@@ -70,6 +78,15 @@ main {
   }
 
   .content {
+    @media (prefers-color-scheme: dark) {
+      background-color: #000;
+      .post {
+        color: #fff;
+      }
+      .post-title {
+        color: #eee;
+      }
+    }
     @media screen and (min-width: $mobileW + 1) {
       max-width: calc(100% - #{$leftWidth} -#{$rightWidth});
       width: 100%;
@@ -77,6 +94,9 @@ main {
   }
   .about {
     background-color: rgb(61, 79, 93);
+    @media(prefers-color-scheme: dark){
+      background-color: #07131d;
+    }
     color: #fff;
     display: flex;
     height: 100vh;
@@ -120,6 +140,9 @@ main {
   }
   .category {
     background-color: rgb(61, 79, 93);
+    @media(prefers-color-scheme: dark){
+      background-color: #07131d;
+    }
     padding-left: 1.5%;
     @media screen and (min-width: $mobileW + 1) {
       max-width: calc(100% - #{$leftWidth});
@@ -324,7 +347,7 @@ main {
   padding-left: 30px;
 }
 .post {
-  font-family: "Merriweather", sans-serif;
+  font-family: "PingFang SC",sans-serif;
   font-weight: 300;
   color: #222;
   line-height: 1.9em;
