@@ -16,15 +16,16 @@ categories: 技术
 <p id='more'></p>
 
 2 插入排序的C++实现
-<pre><code>void insertionsort(vector&lt;int&gt; sorted){
+~~~ c++
+void insertionsort(vector<int>sorted){
     int size = (int)sorted.size();
     //从第2项开始取为目标元素
-    for(int j=1;j&lt;size;j++){
+    for(int j=1;j<size;j++){
         int key = sorted[j];
         //需要比较的是目标元素的前一项开始
         int k = j-1;
         //向后移动的必要条件
-        while(k&gt;=0 &amp;&amp; sorted[k]&gt;key){
+        while(k>=0 && sorted[k]>key){
             sorted[k+1] = sorted[k];
             k--;
         }
@@ -32,7 +33,7 @@ categories: 技术
         sorted[k+1] = key;
     }
 }
-</code></pre>
+~~~
 3 插入排序算法的分析
 <ul>
  	<li>时间复杂度上界 \[O(n^2)\]</li>
@@ -87,25 +88,26 @@ O(g(n)) = \{f(n) ：\exists c&gt;0,n_0&gt;0 ;对于\forall n\ge n_0 都有0\le f
 1 归并排序的基本思想：分治法(Divide and Conquer)
 
 2 归并排序的C++实现：
-<pre><code>vector&lt;int&gt; sorted;
+~~~ c++
+vector<int> sorted;
 //归并操作
 void merge(int left,int mid,int right){
   //将左右两边分别放入新建的数组当中，方便进行归并操作
     int n1 = mid-left+1;
     int n2 = right-mid;
-    vector&lt;int&gt;L,R;
+    vector<int>L,R;
     L.clear();
     R.clear();
-    for(int i=1;i&lt;=n1;i++){
+    for(int i=1;i<=n1;i++){
         L.push_back(sorted[left+i-1]);
     }
-    for(int i=1;i&lt;=n2;i++){
+    for(int i=1;i<=n2;i++){
         R.push_back(sorted[mid+i]);
     }
   //归并排序，利用子序列已经排完序的性质，只需要比较首元素即可
     int i=0,j=0;
-    for(int k=left;k&lt;=right;k++){
-        if(L[i]&lt;=R[j]){
+    for(int k=left;k<=right;k++){
+        if(L[i]<=R[j]){
             sorted[k] = L[i];
             i++;
         }else{
@@ -115,7 +117,7 @@ void merge(int left,int mid,int right){
   //不使用哨兵，利用下标到达界限判断
         if(i==L.size()){
             k++;
-            for(int u=j;u&lt;R.size();u++){
+            for(int u=j;u<R.size();u++){
                 sorted[k] = R[u];
                 k++;
             }
@@ -123,7 +125,7 @@ void merge(int left,int mid,int right){
         }
         if(j==R.size()){
             k++;
-            for(int u=i;u&lt;L.size();u++){
+            for(int u=i;u<L.size();u++){
                 sorted[k] = L[u];
                 k++;
             }
@@ -134,7 +136,7 @@ void merge(int left,int mid,int right){
 //执行归并函数所需要调用的入口
 void mergesort(int leftlim,int rightlim){
   //若大于等于则表示已经只有一个元素，不需要进行递归进入下一步
-    if(leftlim&lt;rightlim){
+    if(leftlim<rightlim){
         int mid = (leftlim+rightlim)/2;
       //左侧递归进行归并
         mergesort(leftlim,mid);
@@ -144,7 +146,7 @@ void mergesort(int leftlim,int rightlim){
         merge(leftlim,mid,rightlim);
     }
 }
-</code></pre>
+~~~
 3 归并排序的递归式
 \[
 T(n) = 2T(n/2)+\Theta(n) (n &gt; 1)

@@ -70,7 +70,8 @@ DEPENDENCIES
   bundler (> 1.16)
   jekyll-feed
   plainwhite!
-  rake (~> 12.0)
+  rake
+  rouge
 
 BUNDLED WITH
    2.1.4
