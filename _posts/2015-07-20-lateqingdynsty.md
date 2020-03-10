@@ -2,7 +2,8 @@
 layout: post
 title:  "从“三妇”看晚清中国"
 date:   2015-07-20 02:21:09 +0800
-categories: 读书记
+category: 读书记
+tags: [历史,近代中国]
 ---
 <p><strong>本文为近代史纲要课程的结课作业，现发于此。</strong></p>
 

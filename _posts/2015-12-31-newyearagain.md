@@ -2,7 +2,8 @@
 layout: post
 title:  "New Year Again"
 date:   2015-12-31 10:21:36 +0800
-categories: NEWYEAR 
+category: NEWYEAR 
+tags: [新年,年终]
 ---
 
 2015又将成为一个历史。

@@ -1,33 +1,146 @@
 ---
 layout: default
+# The posts' layout
+# v2.0
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2017-2019 Cotes Chung
+# MIT Licensed
 ---
-{%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
-<div class="post-container">
-  <a class="post-link" href="{{ page.url | relative_url }}">
-    <h2 class="post-title">{{ page.title | escape }}</h2>
-  </a>
-  <div class="post-meta">
-    <ul class="post-categories">
-      {%- for tag in page.categories -%}
-      <li>{{ tag }}</li>
-      {%- endfor -%}
-    </ul>
-    <div class="post-date"><i class="icon-calendar"></i>{{ page.date | date: date_format }}</div>
-  </div>
-  <div class="post">
-    {{ content }}
-  </div>
-  <div class="pagination">
-    {% if page.previous %}
-      <a  class="prev guide" href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; {{ page.previous.title }}</a>
-    {% else %}
-      <a  class="prev disabled guide">已经是最后一篇啦</a>
-    {% endif %}
-    {% if page.next %}
-      <a href="{{ BASE_PATH }}{{ page.next.url }}"  class="next guide" title="{{ page.next.title }}">{{ page.next.title }} &rarr;</a>
-    {% else %}
-      <div class="next disabled guide">已经是第一篇了</div>
-    {% endif %}
-  </div>
-  <div class="backtop" id='backtop' style="bottom: 90px;"><div class="back-btn" style="background-image: url({{ "/assets/backtop.png" | relative_url }})"></div></div>
+
+<div class="progress" style="">
+  <div class="progress-bar" id="progress" role="progressbar" style="width: 0%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
+<div class="row" id='article_wrapper'>
+  <div id="post-wrapper" class="col-12 col-lg-11 col-xl-8">
+
+    <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+
+      <h1 data-toc-skip>{{ page.title }}</h1>
+
+      <div class="post-meta text-muted d-flex flex-column">
+        <!-- Published Date and Categoreis -->
+        <div>
+          <span class="timeago" data-toggle="tooltip" data-placement="bottom"
+           title="{{ page.date | date: site.data.date_format.tooltip }}">
+            {{ page.date | date: site.data.date_format.post }}
+            <i class="unloaded">{{ page.date | date_to_xmlschema }}</i>
+          </span>
+          {% if page.categories.size > 0 %}on{% endif %}
+          {% for category in page.categories %}
+            <a href='{{ site.baseurl }}/categories/{{ category | replace: ' ', '-' | downcase | url_encode }}/'>{{ category }}</a>
+            {%- unless forloop.last -%}, {%- endunless -%}
+          {% endfor %}
+        </div>
+
+        <!-- page views -->
+        {% if site.google_analytics.pv %}
+        <div>
+          <span id="pv" class="pageviews"><i class="fas fa-spinner fa-spin fa-fw"></i></span> views
+        </div>
+        {% endif %}
+
+      </div> <!-- .post-meta -->
+
+      <div class="post-content" id='post-content'>
+        {% if page.image %}
+        <img src="{{ page.image }}">
+        {% endif %}
+        <!-- Add lozad class into image tags. see: <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+        {% if content contains '<img src=' %}
+          {% capture loading %}
+           {{ "/assets/img/commons/loading.png" | relative_url }}
+          {% endcapture %}
+          {% assign replacement = '<img class="lozad" src=' | append: loading | append: ' data-src=' %}
+          {{ content | replace: '<img src=', replacement }}
+        {% else %}
+          {{ content }}
+        {% endif %}
+      </div>
+
+      <div class="post-tail-wrapper text-muted" id="post-tail-wrapper">
+
+        <!-- lastmod -->
+        {% if page.seo.date_modified > page.date %}
+        <div>
+          Updated
+          <span class="timeago lastmod"
+            data-toggle="tooltip" data-placement="top"
+             title="{{ page.seo.date_modified | date: site.data.date_format.tooltip }}">
+            {{ page.seo.date_modified | date: site.data.date_format.post }}
+            <i class="unloaded">{{ page.seo.date_modified | date_to_xmlschema}}</i>
+          </span>
+        </div>
+        {% endif %}
+
+        <!-- Tags -->
+        {% if page.tags.size > 0 %}
+        <div class="pt-3">
+          {% for tag in page.tags %}
+          <a href="{{ site.baseurl }}/tags/{{ tag | replace: ' ', '-' | downcase | url_encode }}/"
+            class="post-tag no-text-decoration" >
+            {{- tag -}}
+          </a>
+          {% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="post-tail-bottom
+          d-flex justify-content-between align-items-center pt-5 pb-2">
+
+          {% if site.data.right.license %}
+          <div class="license-wrapper">
+            <span class="license-text ml-1 mr-1">
+              {{ site.data.right.license.prompt }}
+              <a href="{{ site.data.right.license.link }}">
+                {{ site.data.right.license.name }}
+                {% for icon in site.data.right.license.icons %}
+                <i class="{{ icon }}"></i>
+                {% endfor %}
+              </a>
+            </span>
+          </div>
+          {% endif %}
+
+          {% include post-sharing.html %}
+
+        </div><!-- .post-tail-bottom -->
+
+      </div><!-- div.post-tail -->
+
+    </div> <!-- .post -->
+
+  </div> <!-- #post-wrapper -->
+
+  {% include panel.html %}
+
+</div> <!-- .row -->
+
+<div class="row">
+  <div id="post-extend-wrapper" class="col-12 col-lg-11 col-xl-8">
+
+    <div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+
+      {% include post-nav.html %}
+
+      {% if site.disqus.comments and page.comments %}
+        {% include disqus.html %}
+      {% endif %}
+
+      {% include related-posts.html %}
+
+    </div> <!-- .pl-1 pr-1 -->
+
+  </div> <!-- #post-extend-wrapper -->
+
+</div> <!-- .row -->
+
+<script>
+  document.addEventListener('scroll', function(){
+    let wrapperHeight = $('#post-wrapper').height() - $('#post-tail-wrapper').height();
+    let nowPosition = $(document).scrollTop();
+    let now = wrapperHeight !== 0 ? nowPosition / wrapperHeight : 0;
+    $('#progress').attr('style', `width: ${(now * 100)}%`);
+    
+  });
+</script>
+{% include lozad.html %}

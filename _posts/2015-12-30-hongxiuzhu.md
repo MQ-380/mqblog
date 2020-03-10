@@ -2,7 +2,8 @@
 layout: post
 title:  "2015年年終回顧"
 date:   2015-12-30 08:21:09 +0800
-categories: NEWYEAR
+category: NEWYEAR
+tags: [洪秀柱,中国国民党,演讲稿]
 ---
 <h3>洪秀柱在中國國民黨臨時全代會上的演講</h3>
 

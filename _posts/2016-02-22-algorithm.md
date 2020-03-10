@@ -2,7 +2,8 @@
 layout: post
 title:  "算法导论"
 date:   2016-02-15 04:21:36 +0800
-categories: 技术
+category: 技术
+tags: [算法,数学]
 ---
 
 <strong>本文中含有数学公式，若无法显示请刷新重试，谢谢~</strong>
