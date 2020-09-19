@@ -1,9 +1,11 @@
 ---
 layout: post
-title:  "世界在年轻的胸怀（胡志强） "
-date:   2019-07-31 10:21:36 +0800
-category: NEWYEAR 
-tags: [新年,年终]
+title: '世界在年轻的胸怀（胡志强） '
+date: 2019-07-31 10:21:36 +0800
+category: NEWYEAR
+tags: [新年, 年终]
+seo:
+  date_modified: 2020-03-11 23:02:29 +0800
 ---
 
 这篇只能算是个提纲。大概在几年前在youtube上看到了胡市长讲的通识课。感觉很有营养。

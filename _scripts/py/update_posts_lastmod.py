@@ -85,14 +85,6 @@ def update_lastmod(path, verbose, date):
         frontmatter, line_num = get_yaml(post)
         meta = yaml.load(frontmatter)
 
-        if 'seo' in meta:
-            if ('date_modified' in meta['seo'] and
-                    meta['seo']['date_modified'] == lastmod):
-                continue
-            else:
-                meta['seo']['date_modified'] = lastmod
-        else:
-            meta.insert(line_num, 'seo', dict(date_modified=lastmod))
 
         output = 'new.md'
         if os.path.isfile(output):

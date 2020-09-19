@@ -1,9 +1,11 @@
 ---
 layout: post
-title:  "基础算法与数据结构（十三） 快速排序"
-date:   2017-05-05 00:03:36 +0800
+title: 基础算法与数据结构（十三） 快速排序
+date: 2017-05-05 00:03:36 +0800
 category: 技术
-tags: [数据结构,算法,排序,快速排序]
+tags: [数据结构, 算法, 排序, 快速排序]
+seo:
+  date_modified: 2020-03-11 23:02:29 +0800
 ---
 
 本节所有图片均选自 http://algs4.cs.princeton.edu/23quicksort/
