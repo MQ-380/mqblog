@@ -41,11 +41,10 @@ export {themeContext}
 
 function ContextProvier(props) {
 	let [ themeContextState,  setThemeContextState ] = useState({});
-	
+	let value = {themeContextState, setThemeContextState}
 	return (
 		<themeContext.Provider
-			value={{themeContextState, setThemeContextState}}
-		>
+		value={value}>
 			{props.children}
 		</themeContext.Provider>
 	);
